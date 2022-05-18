@@ -1,0 +1,34 @@
+{
+    "name": "grzegorz-jamroz/sf-api-bundle",
+    "description": "Bundle provides basic features for Symfony Api.",
+    "authors": [
+        {
+            "name": "Grzegorz Jamróz",
+            "email": "grzegorz.jamrooz@gmail.com"
+        }
+    ],
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Ifrost\\ApiBundle\\": "src/"
+        }
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.8",
+        "phpstan/phpstan": "^1.6",
+        "phpunit/phpunit": "^9.5",
+        "symfony/var-dumper": "^6.0",
+        "symfony/yaml": "^6.0"
+    },
+    "require": {
+        "symfony/http-kernel": "^6.0",
+        "symfony/framework-bundle": "^6.0",
+        "symfony/messenger": "^6.0",
+        "grzegorz-jamroz/plain-data-transformer": "^0.0.2",
+        "symfony/http-foundation": "^6.0"
+    }
+}

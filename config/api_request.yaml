@@ -1,0 +1,4 @@
+services:
+  Ifrost\ApiBundle\Utility\ApiRequest:
+    arguments:
+      $requestStack: '@request_stack'
