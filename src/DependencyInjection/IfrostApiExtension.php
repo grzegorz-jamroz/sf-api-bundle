@@ -36,6 +36,9 @@ class IfrostApiExtension extends Extension
         }
     }
 
+    /**
+     * @param array<string, mixed> $config
+     */
     public function getConfiguration(array $config, ContainerBuilder $container): ConfigurationInterface
     {
         return new Configuration();
