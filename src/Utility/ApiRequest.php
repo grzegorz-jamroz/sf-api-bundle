@@ -46,6 +46,14 @@ class ApiRequest implements ApiRequestInterface
     /**
      * {@inheritDoc}
      */
+    public function setData(array $data): void
+    {
+        $this->data = $data;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getSelectedData(array $params): array
     {
         $data = $this->getData();

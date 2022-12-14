@@ -15,6 +15,11 @@ interface ApiRequestInterface
     public function getData(): array;
 
     /**
+     * @param array<string|int, mixed> $data
+     */
+    public function setData(array $data): void;
+
+    /**Ź
      * @param array<int, string> $params
      *
      * @return array<string, mixed>
