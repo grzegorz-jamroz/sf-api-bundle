@@ -35,6 +35,7 @@ class ApiRequest implements ApiRequestInterface
 
         $body = json_decode(Transform::toString($this->request->getContent()), true);
         $this->data = array_merge(
+            Transform::toArray($this->request->cookies->all()),
             Transform::toArray($this->request->query->all()),
             Transform::toArray($this->request->request->all()),
             Transform::toArray($body)

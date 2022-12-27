@@ -1,4 +1,9 @@
 # Changelog
+## Unreleased
+### Change
+- [ApiRequest](src/Utility/ApiRequest.php)
+  - added fetching data from cookies
+
 ## [v6.1.1] - 2022.12.14
 ### Add
 - [ApiRequestInterface](src/Utility/ApiRequestInterface.php)
