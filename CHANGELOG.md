@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## [v6.1.2] - 2022.12.27
 ### Change
 - [ApiRequest](src/Utility/ApiRequest.php)
   - added fetching data from cookies
@@ -11,4 +11,5 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v6.1.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.1.2]
 [v6.1.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.1.1]
