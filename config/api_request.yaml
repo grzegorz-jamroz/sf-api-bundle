@@ -1,4 +1,9 @@
 services:
   Ifrost\ApiBundle\Utility\ApiRequest:
+
+  ifrost_api.api_request:
+    class: Ifrost\ApiBundle\Utility\ApiRequest
     arguments:
       $requestStack: '@request_stack'
+
+  Ifrost\ApiBundle\Utility\ApiRequestInterface: '@ifrost_api.api_request'

@@ -45,7 +45,7 @@ class GetConfigurationTest extends TestCase
         (new IfrostApiExtension())->load($configs, $containerBuilder);
 
         // Then
-        $this->assertTrue($containerBuilder->hasDefinition(ApiRequest::class));
+        $this->assertTrue($containerBuilder->hasDefinition('ifrost_api.api_request'));
         $this->assertTrue($containerBuilder->hasDefinition(ExceptionListener::class));
     }
 }
