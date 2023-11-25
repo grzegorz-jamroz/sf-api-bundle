@@ -43,4 +43,22 @@ class OnKernelExceptionTest extends TestCase
             $this->assertEquals($expected, json_decode($exceptionListener->getEvent()->getResponse()->getContent(), true));
         }
     }
+
+    public function testShouldReturnOriginalUnescapedMessageInResponse(): void
+    {
+        // Given
+        $exception = new \Exception("Sample exception occurred with 'some expression' in \"quotes\".");
+        $expected = [
+            'message' => $exception->getMessage(),
+        ];
+        $envs = ['dev', 'test'];
+
+        // When & Then
+        foreach ($envs as $env) {
+            $_ENV['APP_ENV'] = $env;
+            $exceptionListener = new ExceptionListenerVariant();
+            $exceptionListener->onKernelExceptionVariant($exception);
+            $this->assertEquals(json_encode($expected, JSON_UNESCAPED_UNICODE), $exceptionListener->getEvent()->getResponse()->getContent());
+        }
+    }
 }
