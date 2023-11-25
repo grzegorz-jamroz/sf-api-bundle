@@ -16,7 +16,7 @@ class GetSubscribedServicesTest extends TestCase
         $services = Controller::getSubscribedServices();
 
         // When & Then
-        $this->assertEquals($services['app.api_request'], sprintf('?%s', ApiRequest::class));
+        $this->assertEquals($services['ifrost_api.api_request'], sprintf('?%s', ApiRequest::class));
         $this->assertEquals($services['messenger.default_bus'], sprintf('?%s', MessageBusInterface::class));
     }
 }

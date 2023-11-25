@@ -24,11 +24,11 @@ class GetApiRequestServiceTest extends TestCase
     {
         // Expect
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage(sprintf('Container identifier "app.api_request" is not instance of %s', ApiRequestInterface::class));
+        $this->expectExceptionMessage(sprintf('Container identifier "ifrost_api.api_request" is not instance of %s', ApiRequestInterface::class));
 
         // Given
         $controller = new ApiControllerVariant();
-        $controller->getContainer()->set('app.api_request', new Sample());
+        $controller->getContainer()->set('ifrost_api.api_request', new Sample());
 
         // When & Then
         $controller->getApiRequestService();

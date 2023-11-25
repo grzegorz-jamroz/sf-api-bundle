@@ -19,7 +19,7 @@ class ApiController extends AbstractController
     public static function getSubscribedServices(): array
     {
         return array_merge(parent::getSubscribedServices(), [
-            'app.api_request' => '?' . ApiRequest::class,
+            'ifrost_api.api_request' => '?' . ApiRequest::class,
             'messenger.default_bus' => '?' . MessageBusInterface::class,
         ]);
     }
@@ -42,8 +42,8 @@ class ApiController extends AbstractController
 
     protected function getApiRequestService(): ApiRequestInterface
     {
-        $apiRequest = $this->container->get('app.api_request');
-        $apiRequest instanceof ApiRequestInterface ?: throw new RuntimeException(sprintf('Container identifier "app.api_request" is not instance of %s', ApiRequestInterface::class));
+        $apiRequest = $this->container->get('ifrost_api.api_request');
+        $apiRequest instanceof ApiRequestInterface ?: throw new RuntimeException(sprintf('Container identifier "ifrost_api.api_request" is not instance of %s', ApiRequestInterface::class));
 
         return $apiRequest;
     }

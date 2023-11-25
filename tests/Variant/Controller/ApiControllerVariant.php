@@ -21,7 +21,7 @@ class ApiControllerVariant extends ApiController
     public function __construct(?Request $request = null)
     {
         $container = new Container();
-        $container->set('app.api_request', new ApiRequestVariant($request));
+        $container->set('ifrost_api.api_request', new ApiRequestVariant($request));
         $this->setContainer($container);
     }
 
