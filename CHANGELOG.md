@@ -1,4 +1,9 @@
 # Changelog
+## [v6.2.1] - 2023.11.26
+### Change
+- Update dependencies
+  - plain-data-transformer to v1.0.0
+
 ## [v6.2.0] - 2023.11.25
 ### Change
 - [ExceptionListener](src/EventListener/ExceptionListener.php)
@@ -25,6 +30,7 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v6.2.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.1]
 [v6.2.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.0]
 [v6.1.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.1.2]
 [v6.1.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.1.1]
