@@ -1,5 +1,5 @@
 # Changelog
-## unreleased
+## [v6.2.2] - 2023.11.28
 ### Fix
 - [ApiRequest](src/Utility/ApiRequest.php)
   - fix `ifrost_api.api_request` service declaration
@@ -35,6 +35,7 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v6.2.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.2]
 [v6.2.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.1]
 [v6.2.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.0]
 [v6.1.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.1.2]
