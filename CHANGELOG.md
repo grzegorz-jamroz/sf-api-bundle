@@ -1,4 +1,9 @@
 # Changelog
+## unreleased
+### Fix
+- [ApiRequest](src/Utility/ApiRequest.php)
+  - fix `ifrost_api.api_request` service declaration
+
 ## [v6.2.1] - 2023.11.26
 ### Change
 - Update dependencies

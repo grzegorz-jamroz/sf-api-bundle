@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\Controller;
 
-use Ifrost\ApiBundle\Utility\ApiRequest;
 use Ifrost\ApiBundle\Utility\ApiRequestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
@@ -19,7 +18,7 @@ class ApiController extends AbstractController
     public static function getSubscribedServices(): array
     {
         return array_merge(parent::getSubscribedServices(), [
-            'ifrost_api.api_request' => '?' . ApiRequest::class,
+            'ifrost_api.api_request' => '?' . ApiRequestInterface::class,
             'messenger.default_bus' => '?' . MessageBusInterface::class,
         ]);
     }
