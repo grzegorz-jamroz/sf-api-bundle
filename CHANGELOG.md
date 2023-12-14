@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## [v6.3.0] - 2023.12.14
 ### Add
 - Support Symfony 7
   - update dependencies
@@ -40,6 +40,7 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v6.3.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.3.0]
 [v6.2.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.2]
 [v6.2.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.1]
 [v6.2.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.0]
