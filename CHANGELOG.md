@@ -1,4 +1,9 @@
 # Changelog
+## Unreleased
+### Add
+- Support Symfony 7
+  - update dependencies
+  
 ## [v6.2.2] - 2023.11.28
 ### Fix
 - [ApiRequest](src/Utility/ApiRequest.php)
