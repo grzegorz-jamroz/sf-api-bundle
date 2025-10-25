@@ -9,7 +9,9 @@ declare(strict_types=1);
 namespace Ifrost\ApiBundle\Routing;
 
 use FilesystemIterator;
+use Ifrost\ApiBundle\Exception\CouldNotReadFileException;
 use Ifrost\ApiBundle\Traits\WithFindClassTrait;
+use InvalidArgumentException;
 use RecursiveCallbackFilterIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -52,14 +54,18 @@ class AnnotatedRouteActionLoader extends FileLoader
                 continue;
             }
 
-            if ($class = $this->findClass($file)) {
-                $refl = new ReflectionClass($class);
-                if ($refl->isAbstract()) {
-                    continue;
-                }
-
-                (new AddAnnotatedRouteActionHandler($class, $collection))->handle();
+            try {
+                $class = $this->findClass($file);
+            } catch (CouldNotReadFileException) {
             }
+
+            $refl = new ReflectionClass($class);
+
+            if ($refl->isAbstract()) {
+                continue;
+            }
+
+            (new AddAnnotatedRouteActionHandler($class, $collection))->handle();
         }
 
         return $collection;

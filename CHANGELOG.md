@@ -1,4 +1,8 @@
 # Changelog
+## Unreleased
+### Change
+- Return single type (`string`) for [WithFindClassTrait](src/Traits/WithFindClassTrait.php)
+
 ## [v7.0.0] - 2025.10.25
 ### Add
 - Add annotated route actions

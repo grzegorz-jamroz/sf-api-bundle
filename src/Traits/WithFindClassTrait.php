@@ -7,6 +7,7 @@ declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\Traits;
 
+use Ifrost\ApiBundle\Exception\CouldNotReadFileException;
 use InvalidArgumentException;
 use SplFileInfo;
 
@@ -15,9 +16,11 @@ trait WithFindClassTrait
     /**
      * Returns the full class name for the first class in the file.
      *
-     * @return class-string|false
+     * @return class-string
+     *
+     * @throws InvalidArgumentException When the file cannot be read or does not contain a class
      */
-    protected function findClass(string|SplFileInfo $file): string|false
+    protected function findClass(string|SplFileInfo $file): string
     {
         $class = false;
         $namespace = false;
@@ -26,12 +29,7 @@ trait WithFindClassTrait
             $file = $file->getPathname();
         }
 
-        $content = file_get_contents($file) ?: '';
-
-        if ($content === '') {
-            return false;
-        }
-
+        $content = file_get_contents($file) ?: throw new CouldNotReadFileException(sprintf('Could not read the file "%s".', $file));
         $tokens = token_get_all($content);
 
         if (1 === \count($tokens) && \T_INLINE_HTML === $tokens[0][0]) {
@@ -39,11 +37,14 @@ trait WithFindClassTrait
         }
 
         $nsTokens = [\T_NS_SEPARATOR => true, \T_STRING => true];
+
         if (\defined('T_NAME_QUALIFIED')) {
             $nsTokens[\T_NAME_QUALIFIED] = true;
         }
+
         for ($i = 0; isset($tokens[$i]); ++$i) {
             $token = $tokens[$i];
+
             if (!isset($token[1])) {
                 continue;
             }
@@ -92,6 +93,6 @@ trait WithFindClassTrait
             }
         }
 
-        return false;
+        throw new CouldNotReadFileException(sprintf('Could not read the file "%s".', $file));
     }
 }
