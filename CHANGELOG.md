@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## [v7.0.1] - 2025.10.25
 ### Change
 - Return single type (`string`) for [WithFindClassTrait](src/Traits/WithFindClassTrait.php)
 
@@ -52,6 +52,7 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v7.0.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.1
 [v7.0.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.0
 [v6.3.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.3.0
 [v6.2.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v6.2.2
