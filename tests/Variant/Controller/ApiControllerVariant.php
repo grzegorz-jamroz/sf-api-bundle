@@ -1,9 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Tests\Variant\Controller;
+namespace Ifrost\ApiBundle\Tests\Variant\Controller;
 
 use Ifrost\ApiBundle\Controller\ApiController;
+use Ifrost\ApiBundle\Messenger\MessageHandler;
 use Ifrost\ApiBundle\Utility\ApiRequestInterface;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -11,10 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
-use Tests\Variant\Messenger\Command\SampleCommand;
-use Tests\Variant\Messenger\Handler\SampleCommandHandler;
-use Tests\Variant\Sample;
-use Tests\Variant\Utility\ApiRequestVariant;
+use Ifrost\ApiBundle\Tests\Variant\Messenger\Command\SampleCommand;
+use Ifrost\ApiBundle\Tests\Variant\Messenger\Handler\SampleCommandHandler;
+use Ifrost\ApiBundle\Tests\Variant\Sample;
+use Ifrost\ApiBundle\Tests\Variant\Utility\ApiRequestVariant;
 
 class ApiControllerVariant extends ApiController
 {
@@ -72,11 +74,12 @@ class ApiControllerVariant extends ApiController
                 SampleCommand::class => [new SampleCommandHandler()],
             ])),
         ]);
-        $this->getContainer()->set('messenger.default_bus', $bus);
+        $container = $this->getContainer();
+        $container->set('@Ifrost\ApiBundle\Messenger\MessageHandlerInterface', new MessageHandler($bus));
     }
 
-    public function addInvalidMessageBusToContainer(): void
+    public function addInvalidMessageHandlerToContainer(): void
     {
-        $this->getContainer()->set('messenger.default_bus', new Sample());
+        $this->getContainer()->set('@Ifrost\ApiBundle\Messenger\MessageHandlerInterface', new Sample());
     }
 }

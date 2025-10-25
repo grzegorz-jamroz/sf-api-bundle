@@ -1,7 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Tests\Variant;
+namespace Ifrost\ApiBundle\Tests\Variant;
 
 class Sample
 {

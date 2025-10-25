@@ -1,9 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Tests\Variant\Messenger\Handler;
+namespace Ifrost\ApiBundle\Tests\Variant\Messenger\Handler;
 
-use Tests\Variant\Messenger\Command\SampleCommand;
+use Ifrost\ApiBundle\Tests\Variant\Messenger\Command\SampleCommand;
 
 class SampleCommandHandler
 {

@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Utility\ApiRequestTest;
+namespace Ifrost\ApiBundle\Tests\Unit\Utility\ApiRequestTest;
 
 use PHPUnit\Framework\TestCase;
-use Tests\Variant\Utility\ApiRequestVariant;
+use Ifrost\ApiBundle\Tests\Variant\Utility\ApiRequestVariant;
 
 class SetDataTest extends TestCase
 {

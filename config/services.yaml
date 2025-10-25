@@ -1,0 +1,11 @@
+services:
+    _defaults:
+        autowire: true
+
+    Ifrost\ApiBundle\Messenger\MessageHandlerInterface:
+        class: Ifrost\ApiBundle\Messenger\MessageHandler
+
+    Ifrost\ApiBundle\Routing\AnnotatedRouteActionLoader:
+        arguments:
+            $locator: '@file_locator'
+        tags: [routing.loader]

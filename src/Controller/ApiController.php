@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\Controller;
 
+use Ifrost\ApiBundle\Messenger\MessageHandlerInterface;
 use Ifrost\ApiBundle\Utility\ApiRequestInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use Symfony\Component\Messenger\Envelope;
-use Symfony\Component\Messenger\Exception\HandlerFailedException;
-use Symfony\Component\Messenger\MessageBusInterface;
-use Symfony\Component\Messenger\Stamp\StampInterface;
 
 class ApiController extends AbstractController
 {
@@ -19,24 +16,12 @@ class ApiController extends AbstractController
     {
         return array_merge(parent::getSubscribedServices(), [
             'ifrost_api.api_request' => '?' . ApiRequestInterface::class,
-            'messenger.default_bus' => '?' . MessageBusInterface::class,
         ]);
     }
 
     protected function handle(object $message): void
     {
-        try {
-            $this->dispatchMessage($message);
-        } catch (\Exception $e) {
-            if (
-                $e instanceof HandlerFailedException
-                && $e->getPrevious() !== null
-            ) {
-                throw $e->getPrevious();
-            }
-
-            throw $e;
-        }
+        $this->getMessageHandler()->handle($message);
     }
 
     protected function getApiRequestService(): ApiRequestInterface
@@ -79,25 +64,11 @@ class ApiController extends AbstractController
         return $this->getApiRequestService()->getRequiredField($key);
     }
 
-    /**
-     * Dispatches a message to the bus.
-     *
-     * @param object                     $message The message or the message pre-wrapped in an envelope
-     * @param array<int, StampInterface> $stamps
-     *
-     * @throws \Psr\Container\ContainerExceptionInterface
-     * @throws \Psr\Container\NotFoundExceptionInterface
-     */
-    private function dispatchMessage(object $message, array $stamps = []): Envelope
+    protected function getMessageHandler(): MessageHandlerInterface
     {
-        if (!$this->container->has('messenger.default_bus')) {
-            $message = class_exists(Envelope::class) ? 'You need to define the "messenger.default_bus" configuration option.' : 'Try running "composer require symfony/messenger".';
-            throw new \LogicException('The message bus is not enabled in your application. ' . $message);
-        }
+        $eventDispatcher = $this->container->get('@Ifrost\ApiBundle\Messenger\MessageHandlerInterface');
+        $eventDispatcher instanceof MessageHandlerInterface ?: throw new RuntimeException(sprintf('Container identifier "@Ifrost\ApiBundle\Messenger\MessageHandlerInterface" is not instance of %s', MessageHandlerInterface::class));
 
-        $bus = $this->container->get('messenger.default_bus');
-        $bus instanceof MessageBusInterface ?: throw new RuntimeException(sprintf('Container identifier "messenger.default_bus" is not instance of %s', MessageBusInterface::class));
-
-        return $bus->dispatch($message, $stamps);
+        return $eventDispatcher;
     }
 }

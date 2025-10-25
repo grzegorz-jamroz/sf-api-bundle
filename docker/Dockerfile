@@ -2,7 +2,9 @@ FROM php:8.4-cli
 
 RUN apt-get update && apt-get install -y \
     git \
-    unzip
+    unzip \
+    e2fsprogs \
+    sudo
 
 ## Install composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -25,8 +27,11 @@ RUN xdebug off
 WORKDIR /app
 
 COPY ./composer.json /app/composer.json
-COPY ./composer.lock /app/composer.lock
+#COPY ./composer.lock /app/composer.lock
 
 RUN composer install
+
+RUN sudo chown -R 1000:1000 /app
+RUN sudo mkdir -p /opt/phpstorm-coverage && sudo chown 1000:1000 /opt/phpstorm-coverage
 
 CMD ["tail", "-f", "/dev/null"]

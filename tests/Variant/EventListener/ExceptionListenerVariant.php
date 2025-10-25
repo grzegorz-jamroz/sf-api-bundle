@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Tests\Variant\EventListener;
+namespace Ifrost\ApiBundle\Tests\Variant\EventListener;
 
 use Ifrost\ApiBundle\EventListener\ExceptionListener;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Tests\Variant\HttpKernelVariant;
+use Ifrost\ApiBundle\Tests\Variant\HttpKernelVariant;
 
 class ExceptionListenerVariant extends ExceptionListener
 {

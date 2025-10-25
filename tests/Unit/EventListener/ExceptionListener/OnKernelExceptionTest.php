@@ -1,10 +1,11 @@
 <?php
+
 declare(strict_types=1);
 
 namespace EventListener\ExceptionListener;
 
 use PHPUnit\Framework\TestCase;
-use Tests\Variant\EventListener\ExceptionListenerVariant;
+use Ifrost\ApiBundle\Tests\Variant\EventListener\ExceptionListenerVariant;
 
 class OnKernelExceptionTest extends TestCase
 {
@@ -14,6 +15,7 @@ class OnKernelExceptionTest extends TestCase
         $exception = new \Exception('Sample exception occurred');
         $expected = [
             'message' => $exception->getMessage(),
+            'exceptionClass' => 'Exception',
         ];
         $envs = ['dev', 'test'];
 
@@ -50,6 +52,7 @@ class OnKernelExceptionTest extends TestCase
         $exception = new \Exception("Sample exception occurred with 'some expression' in \"quotes\".");
         $expected = [
             'message' => $exception->getMessage(),
+            'exceptionClass' => 'Exception',
         ];
         $envs = ['dev', 'test'];
 

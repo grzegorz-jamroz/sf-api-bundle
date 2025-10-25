@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Tests\Unit\Controller\ApiController;
+namespace Ifrost\ApiBundle\Tests\Unit\Controller\ApiController;
 
+use Ifrost\ApiBundle\Messenger\MessageHandlerInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use Symfony\Component\Messenger\MessageBusInterface;
-use Tests\Variant\Controller\ApiControllerVariant;
-use Tests\Variant\Messenger\Command\SampleCommand;
+use Ifrost\ApiBundle\Tests\Variant\Controller\ApiControllerVariant;
+use Ifrost\ApiBundle\Tests\Variant\Messenger\Command\SampleCommand;
 
 class HandleTest extends TestCase
 {
@@ -28,24 +28,11 @@ class HandleTest extends TestCase
     {
         // Expect
         $this->expectException(RuntimeException::class);
-        $this->expectExceptionMessage(sprintf('Container identifier "messenger.default_bus" is not instance of %s', MessageBusInterface::class));
+        $this->expectExceptionMessage(sprintf('Container identifier "@Ifrost\ApiBundle\Messenger\MessageHandlerInterface" is not instance of %s', MessageHandlerInterface::class));
 
         // Given
         $controller = new ApiControllerVariant();
-        $controller->addInvalidMessageBusToContainer();
-
-        // When & Then
-        $controller->handle(new SampleCommand('summer'));
-    }
-
-    public function testShouldThrowLogicExceptionWhenContainerReturnSomethingDifferentThanApiRequestInterface()
-    {
-        // Expect
-        $this->expectException(\LogicException::class);
-        $this->expectExceptionMessage('The message bus is not enabled in your application. You need to define the "messenger.default_bus" configuration option.');
-
-        // Given
-        $controller = new ApiControllerVariant();
+        $controller->addInvalidMessageHandlerToContainer();
 
         // When & Then
         $controller->handle(new SampleCommand('summer'));

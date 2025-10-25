@@ -1,33 +1,34 @@
 {
-    "name": "grzegorz-jamroz/sf-api-bundle",
-    "description": "Bundle provides basic features for Symfony Api.",
-    "authors": [
-        {
-            "name": "Grzegorz Jamróz",
-            "email": "grzegorz.jamrooz@gmail.com"
-        }
-    ],
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Ifrost\\ApiBundle\\": "src/"
-        }
-    },
-    "require-dev": {
-        "symfony/yaml": "^6.0|^7.0",
-        "phpunit/phpunit": "^9.5",
-        "phpstan/phpstan": "^1.8",
-        "friendsofphp/php-cs-fixer": "^3.11"
-    },
-    "require": {
-        "grzegorz-jamroz/plain-data-transformer": "^1.0.0",
-        "symfony/http-kernel": "^6.0|^7.0",
-        "symfony/framework-bundle": "^6.0|^7.0",
-        "symfony/messenger": "^6.0|^7.0",
-        "symfony/http-foundation": "^6.0|^7.0"
+  "name": "grzegorz-jamroz/sf-api-bundle",
+  "description": "Bundle provides basic features for Symfony Api.",
+  "version": "6.3.0",
+  "authors": [
+    {
+      "name": "Grzegorz Jamróz",
+      "email": "grzegorz.jamrooz@gmail.com"
     }
+  ],
+  "autoload-dev": {
+    "psr-4": {
+      "Ifrost\\ApiBundle\\Tests\\": "tests/"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Ifrost\\ApiBundle\\": "src/"
+    }
+  },
+  "require-dev": {
+    "symfony/yaml": "^6.0|^7.0",
+    "phpunit/phpunit": "^12.4",
+    "friendsofphp/php-cs-fixer": "^3.89",
+    "phpstan/phpstan": "^2.1"
+  },
+  "require": {
+    "grzegorz-jamroz/plain-data-transformer": "^1.0",
+    "symfony/http-kernel": "^6.0|^7.0",
+    "symfony/framework-bundle": "^6.0|^7.0",
+    "symfony/messenger": "^6.0|^7.0",
+    "symfony/http-foundation": "^6.0|^7.0"
+  }
 }

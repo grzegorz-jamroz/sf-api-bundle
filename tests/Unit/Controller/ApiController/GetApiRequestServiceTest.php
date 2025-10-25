@@ -1,13 +1,14 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Controller\ApiController;
+namespace Ifrost\ApiBundle\Tests\Unit\Controller\ApiController;
 
 use Ifrost\ApiBundle\Utility\ApiRequestInterface;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\Exception\RuntimeException;
-use Tests\Variant\Controller\ApiControllerVariant;
-use Tests\Variant\Sample;
+use Ifrost\ApiBundle\Tests\Variant\Controller\ApiControllerVariant;
+use Ifrost\ApiBundle\Tests\Variant\Sample;
 
 class GetApiRequestServiceTest extends TestCase
 {

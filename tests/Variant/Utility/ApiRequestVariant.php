@@ -1,8 +1,8 @@
 <?php
+
 declare(strict_types=1);
 
-
-namespace Tests\Variant\Utility;
+namespace Ifrost\ApiBundle\Tests\Variant\Utility;
 
 use Ifrost\ApiBundle\Utility\ApiRequest;
 use Symfony\Component\HttpFoundation\Request;

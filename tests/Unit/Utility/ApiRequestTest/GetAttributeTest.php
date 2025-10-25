@@ -1,11 +1,12 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Tests\Unit\Utility\ApiRequestTest;
+namespace Ifrost\ApiBundle\Tests\Unit\Utility\ApiRequestTest;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
-use Tests\Variant\Utility\ApiRequestVariant;
+use Ifrost\ApiBundle\Tests\Variant\Utility\ApiRequestVariant;
 
 class GetAttributeTest extends TestCase
 {

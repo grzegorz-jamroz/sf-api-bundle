@@ -24,8 +24,9 @@ class IfrostApiExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         $loader = new YamlFileLoader(
             $container,
-            new FileLocator(__DIR__ . '/../../config')
+            new FileLocator(__DIR__ . '/../../config'),
         );
+        $loader->load('services.yaml');
 
         if (Transform::toBool($config['api_request'])) {
             $loader->load('api_request.yaml');

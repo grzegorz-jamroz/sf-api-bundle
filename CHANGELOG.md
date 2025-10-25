@@ -1,7 +1,11 @@
 # Changelog
 ## Unreleased
 ### Add
+- Add annotated route actions
 - Add docker support for development environment
+
+### Change 
+- change tests namespace to `Ifrost\ApiBundle\Tests`
 
 ## [v6.3.0] - 2023.12.14
 ### Add

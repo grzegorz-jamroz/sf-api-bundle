@@ -16,7 +16,7 @@ class Configuration implements ConfigurationInterface
         $treeBuilder->getRootNode()
             ->children()
             ->booleanNode('api_request')->defaultValue(true)->end()
-            ->booleanNode('exception_listener')->defaultValue(true)->end()
+            ->booleanNode('exception_listener')->defaultValue(false)->end()
             ->end()
         ;
 

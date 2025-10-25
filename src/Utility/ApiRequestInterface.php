@@ -26,7 +26,7 @@ interface ApiRequestInterface
      */
     public function getSelectedData(array $params): array;
 
-    public function getField(string $key): mixed;
+    public function getField(string $key, mixed $default = null): mixed;
 
     /**
      * @throws BadRequestException
@@ -35,6 +35,9 @@ interface ApiRequestInterface
 
     public function getFile(string $name): ?UploadedFile;
 
+    /**
+     * @throws BadRequestException
+     */
     public function getRequiredFile(string $key): UploadedFile;
 
     /**
@@ -45,4 +48,23 @@ interface ApiRequestInterface
     public function getRequest(array $params, bool $allowNullable = true): array;
 
     public function getAttribute(string $key, mixed $default = null): mixed;
+
+    /**
+     * @throws BadRequestException
+     */
+    public function getRequiredAttribute(string $key): mixed;
+
+    public function getHeader(string $key): mixed;
+
+    /**
+     * @throws BadRequestException
+     */
+    public function getRequiredHeader(string $key): mixed;
+
+    public function getCookie(string $key): mixed;
+
+    /**
+     * @throws BadRequestException
+     */
+    public function getRequiredCookie(string $key): mixed;
 }

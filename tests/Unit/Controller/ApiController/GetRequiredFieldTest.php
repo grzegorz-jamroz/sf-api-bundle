@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
-namespace Controller\ApiController;
+namespace Ifrost\ApiBundle\Tests\Unit\Controller\ApiController;
 
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\Request;
-use Tests\Variant\Controller\ApiControllerVariant;
+use Ifrost\ApiBundle\Tests\Variant\Controller\ApiControllerVariant;
 
 class GetRequiredFieldTest extends TestCase
 {

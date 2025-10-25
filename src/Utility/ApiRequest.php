@@ -24,9 +24,6 @@ class ApiRequest implements ApiRequestInterface
         $this->request = $requestStack->getCurrentRequest() ?? throw new \RuntimeException('Unable to get Current Request');
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getData(): array
     {
         if ($this->data !== null) {
@@ -35,26 +32,19 @@ class ApiRequest implements ApiRequestInterface
 
         $body = json_decode(Transform::toString($this->request->getContent()), true);
         $this->data = array_merge(
-            Transform::toArray($this->request->cookies->all()),
             Transform::toArray($this->request->query->all()),
             Transform::toArray($this->request->request->all()),
-            Transform::toArray($body)
+            Transform::toArray($body),
         );
 
         return $this->data;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function setData(array $data): void
     {
         $this->data = $data;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getSelectedData(array $params): array
     {
         $data = $this->getData();
@@ -67,14 +57,11 @@ class ApiRequest implements ApiRequestInterface
         return $output;
     }
 
-    public function getField(string $key): mixed
+    public function getField(string $key, mixed $default = null): mixed
     {
-        return $this->getRequest([$key])[$key];
+        return $this->getRequest([$key])[$key] ?? $this->getHeader($key) ?? $this->getCookie($key) ?? $default;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getRequiredField(string $key): mixed
     {
         $value = $this->getField($key);
@@ -104,9 +91,6 @@ class ApiRequest implements ApiRequestInterface
         return $file;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     public function getRequest(
         array $params,
         bool $allowNullable = true
@@ -123,5 +107,54 @@ class ApiRequest implements ApiRequestInterface
     public function getAttribute(string $key, mixed $default = null): mixed
     {
         return $this->request->attributes->get($key, $default);
+    }
+
+    public function getRequiredAttribute(string $key): mixed
+    {
+        $value = $this->getAttribute($key);
+
+        if ($value === null) {
+            throw new BadRequestException(sprintf('Missing attribute "%s".', $key));
+        }
+
+        return $value;
+    }
+
+    public function getHeader(string $key, mixed $default = null): mixed
+    {
+        return $this->request->headers->get($key, $default);
+    }
+
+    /**
+     * @throws BadRequestException
+     */
+    public function getRequiredHeader(string $key): mixed
+    {
+        $value = $this->getHeader($key);
+
+        if ($value === null) {
+            throw new BadRequestException(sprintf('Missing header "%s".', $key));
+        }
+
+        return $value;
+    }
+
+    public function getCookie(string $key, mixed $default = null): mixed
+    {
+        return $this->request->cookies->get($key, $default);
+    }
+
+    /**
+     * @throws BadRequestException
+     */
+    public function getRequiredCookie(string $key): mixed
+    {
+        $value = $this->getCookie($key);
+
+        if ($value === null) {
+            throw new BadRequestException(sprintf('Missing cookie "%s".', $key));
+        }
+
+        return $value;
     }
 }
