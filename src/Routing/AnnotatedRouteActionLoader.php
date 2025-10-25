@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Inspired/Copied from Symfony\Component\Routing\Loader\AttributeDirectoryLoader
+ */
+
 declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\Routing;

@@ -1,4 +1,8 @@
 <?php
+
+/**
+ * Inspired/Copied from Symfony\Component\Routing\Loader\AttributeFileLoader::findClass
+ */
 declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\Traits;
