@@ -27,7 +27,7 @@ RUN xdebug off
 WORKDIR /app
 
 COPY ./composer.json /app/composer.json
-#COPY ./composer.lock /app/composer.lock
+COPY ./composer.lock /app/composer.lock
 
 RUN composer install
 
