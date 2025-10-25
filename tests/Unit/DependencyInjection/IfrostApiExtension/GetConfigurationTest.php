@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DependencyInjection\IfrostApiExtension;
+namespace Ifrost\ApiBundle\Tests\Unit\DependencyInjection\IfrostApiExtension;
 
 use Ifrost\ApiBundle\DependencyInjection\IfrostApiExtension;
 use Ifrost\ApiBundle\EventListener\ExceptionListener;

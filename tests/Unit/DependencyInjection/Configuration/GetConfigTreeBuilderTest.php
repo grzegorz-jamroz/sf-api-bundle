@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DependencyInjection\Configuration;
+namespace Ifrost\ApiBundle\Tests\Unit\DependencyInjection\Configuration;
 
 use Ifrost\ApiBundle\DependencyInjection\Configuration;
 use PHPUnit\Framework\TestCase;

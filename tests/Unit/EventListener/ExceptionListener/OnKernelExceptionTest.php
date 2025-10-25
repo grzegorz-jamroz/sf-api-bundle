@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace EventListener\ExceptionListener;
+namespace Ifrost\ApiBundle\Tests\Unit\EventListener\ExceptionListener;
 
 use PHPUnit\Framework\TestCase;
 use Ifrost\ApiBundle\Tests\Variant\EventListener\ExceptionListenerVariant;
