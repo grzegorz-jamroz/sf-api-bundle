@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\DependencyInjection;
 
+use Exception;
 use PlainDataTransformer\Transform;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 use Symfony\Component\Config\FileLocator;
@@ -16,7 +17,7 @@ class IfrostApiExtension extends Extension
     /**
      * @param array<mixed, mixed> $configs
      *
-     * @throws \Exception
+     * @throws Exception
      */
     public function load(array $configs, ContainerBuilder $container): void
     {

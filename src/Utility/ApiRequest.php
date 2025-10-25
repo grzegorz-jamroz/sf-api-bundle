@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Ifrost\ApiBundle\Utility;
 
 use PlainDataTransformer\Transform;
+use RuntimeException;
 use Symfony\Component\HttpFoundation\Exception\BadRequestException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,7 @@ class ApiRequest implements ApiRequestInterface
 
     public function __construct(RequestStack $requestStack)
     {
-        $this->request = $requestStack->getCurrentRequest() ?? throw new \RuntimeException('Unable to get Current Request');
+        $this->request = $requestStack->getCurrentRequest() ?? throw new RuntimeException('Unable to get Current Request');
     }
 
     public function getData(): array
@@ -93,7 +94,7 @@ class ApiRequest implements ApiRequestInterface
 
     public function getRequest(
         array $params,
-        bool $allowNullable = true
+        bool $allowNullable = true,
     ): array {
         $data = $this->getSelectedData($params);
 

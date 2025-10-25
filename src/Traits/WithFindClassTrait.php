@@ -1,11 +1,14 @@
 <?php
 
 /**
- * Inspired/Copied from Symfony\Component\Routing\Loader\AttributeFileLoader::findClass
+ * Inspired/Copied from Symfony\Component\Routing\Loader\AttributeFileLoader::findClass.
  */
 declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\Traits;
+
+use InvalidArgumentException;
+use SplFileInfo;
 
 trait WithFindClassTrait
 {
@@ -17,14 +20,14 @@ trait WithFindClassTrait
         $class = false;
         $namespace = false;
 
-        if ($file instanceof \SplFileInfo) {
+        if ($file instanceof SplFileInfo) {
             $file = $file->getPathname();
         }
 
         $tokens = token_get_all(file_get_contents($file));
 
         if (1 === \count($tokens) && \T_INLINE_HTML === $tokens[0][0]) {
-            throw new \InvalidArgumentException(sprintf('The file "%s" does not contain PHP code. Did you forgot to add the "<?php" start tag at the beginning of the file?', $file));
+            throw new InvalidArgumentException(sprintf('The file "%s" does not contain PHP code. Did you forgot to add the "<?php" start tag at the beginning of the file?', $file));
         }
 
         $nsTokens = [\T_NS_SEPARATOR => true, \T_STRING => true];

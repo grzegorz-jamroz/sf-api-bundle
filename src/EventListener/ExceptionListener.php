@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Ifrost\ApiBundle\EventListener;
 
+use InvalidArgumentException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpKernel\Event\ExceptionEvent;
 
@@ -24,7 +25,7 @@ class ExceptionListener
 
         try {
             $response->setStatusCode($exception->getCode());
-        } catch (\InvalidArgumentException) {
+        } catch (InvalidArgumentException) {
             $response->setStatusCode(400);
         }
 
