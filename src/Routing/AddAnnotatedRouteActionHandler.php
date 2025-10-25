@@ -18,15 +18,7 @@ class AddAnnotatedRouteActionHandler
 
     public function handle(): void
     {
-        if (!class_exists($this->className)) {
-            throw new \InvalidArgumentException(sprintf('Class "%s" does not exist.', $this->className));
-        }
-
         $class = new \ReflectionClass($this->className);
-
-        if ($class->isAbstract()) {
-            throw new \InvalidArgumentException(sprintf('Annotations from class "%s" cannot be read as it is abstract.', $class->getName()));
-        }
 
         try {
             $attribute = $this->getAttribute($class);
