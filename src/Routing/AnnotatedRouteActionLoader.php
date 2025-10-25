@@ -11,7 +11,6 @@ namespace Ifrost\ApiBundle\Routing;
 use FilesystemIterator;
 use Ifrost\ApiBundle\Exception\CouldNotReadFileException;
 use Ifrost\ApiBundle\Traits\WithFindClassTrait;
-use InvalidArgumentException;
 use RecursiveCallbackFilterIterator;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
@@ -56,6 +55,7 @@ class AnnotatedRouteActionLoader extends FileLoader
 
             try {
                 $class = $this->findClass($file);
+                // @phpstan-ignore-next-line
             } catch (CouldNotReadFileException) {
             }
 
