@@ -19,10 +19,10 @@ interface ApiRequestInterface
      */
     public function setData(array $data): void;
 
-    /**Ź
-     * @param array<int, string> $params
+    /**
+     * @param array<string> $params
      *
-     * @return array<string, mixed>
+     * @return array<string,mixed>
      */
     public function getSelectedData(array $params): array;
 

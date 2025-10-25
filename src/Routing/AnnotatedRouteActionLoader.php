@@ -25,12 +25,18 @@ class AnnotatedRouteActionLoader extends FileLoader
 
     public function load(mixed $resource, ?string $type = null): RouteCollection
     {
+        if (is_string($resource) === false) {
+            return new RouteCollection();
+        }
+
         if (!is_dir($dir = $this->locator->locate($resource))) {
             return new RouteCollection();
         }
 
         $collection = new RouteCollection();
         $collection->addResource(new DirectoryResource($dir, '/\.php$/'));
+
+        /** @var SplFileInfo[] $files */
         $files = iterator_to_array(new RecursiveIteratorIterator(
             new RecursiveCallbackFilterIterator(
                 new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS | FilesystemIterator::FOLLOW_SYMLINKS),
@@ -40,9 +46,6 @@ class AnnotatedRouteActionLoader extends FileLoader
             ),
             RecursiveIteratorIterator::LEAVES_ONLY,
         ));
-        usort($files, function (SplFileInfo $a, SplFileInfo $b) {
-            return (string) $a > (string) $b ? 1 : -1;
-        });
 
         foreach ($files as $file) {
             if (!$file->isFile() || !str_ends_with($file->getFilename(), '.php')) {

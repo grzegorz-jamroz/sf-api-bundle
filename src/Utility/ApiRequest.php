@@ -121,7 +121,7 @@ class ApiRequest implements ApiRequestInterface
         return $value;
     }
 
-    public function getHeader(string $key, mixed $default = null): mixed
+    public function getHeader(string $key, ?string $default = null): mixed
     {
         return $this->request->headers->get($key, $default);
     }
@@ -140,7 +140,7 @@ class ApiRequest implements ApiRequestInterface
         return $value;
     }
 
-    public function getCookie(string $key, mixed $default = null): mixed
+    public function getCookie(string $key, bool|float|int|string|null $default = null): mixed
     {
         return $this->request->cookies->get($key, $default);
     }

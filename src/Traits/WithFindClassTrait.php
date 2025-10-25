@@ -14,8 +14,10 @@ trait WithFindClassTrait
 {
     /**
      * Returns the full class name for the first class in the file.
+     *
+     * @return class-string|false
      */
-    protected function findClass($file): string|false
+    protected function findClass(string|SplFileInfo $file): string|false
     {
         $class = false;
         $namespace = false;
@@ -24,7 +26,13 @@ trait WithFindClassTrait
             $file = $file->getPathname();
         }
 
-        $tokens = token_get_all(file_get_contents($file));
+        $content = file_get_contents($file) ?: '';
+
+        if ($content === '') {
+            return false;
+        }
+
+        $tokens = token_get_all($content);
 
         if (1 === \count($tokens) && \T_INLINE_HTML === $tokens[0][0]) {
             throw new InvalidArgumentException(sprintf('The file "%s" does not contain PHP code. Did you forgot to add the "<?php" start tag at the beginning of the file?', $file));
@@ -41,7 +49,10 @@ trait WithFindClassTrait
             }
 
             if (true === $class && \T_STRING === $token[0]) {
-                return $namespace . '\\' . $token[1];
+                /** @var class-string $className */
+                $className = $namespace . '\\' . $token[1];
+
+                return $className;
             }
 
             if (true === $namespace && isset($nsTokens[$token[0]])) {

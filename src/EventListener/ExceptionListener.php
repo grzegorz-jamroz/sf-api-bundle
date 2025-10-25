@@ -21,7 +21,7 @@ class ExceptionListener
         }
 
         $response = new JsonResponse();
-        $response->setJson(json_encode($data, JSON_UNESCAPED_UNICODE));
+        $response->setJson(json_encode($data, JSON_UNESCAPED_UNICODE) ?: '');
 
         try {
             $response->setStatusCode($exception->getCode());

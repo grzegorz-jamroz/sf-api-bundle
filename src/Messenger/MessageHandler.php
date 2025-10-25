@@ -18,7 +18,11 @@ class MessageHandler implements MessageHandlerInterface
         try {
             $this->bus->dispatch($command);
         } catch (HandlerFailedException $e) {
-            throw $e->getPrevious();
+            if ($e->getPrevious() !== null) {
+                $e = $e->getPrevious();
+            }
+
+            throw $e;
         }
     }
 }

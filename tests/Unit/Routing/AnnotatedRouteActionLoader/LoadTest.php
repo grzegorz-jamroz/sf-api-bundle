@@ -10,7 +10,23 @@ use Symfony\Component\Config\FileLocator;
 
 class LoadTest extends TestCase
 {
-    public function testShouldReturnEmptyCollectionWhenGivenResourceDirectory(): void
+    public function testShouldReturnEmptyCollectionWhenGivenResourceIsNotString(): void
+    {
+        // Expect & Given
+        $resource = [];
+        $type = 'ifrost_api';
+        $loader = new AnnotatedRouteActionLoader(
+            new FileLocator(),
+        );
+
+        // When
+        $collection = $loader->load($resource, $type);
+
+        // Then
+        $this->assertCount(0, $collection);
+    }
+
+    public function testShouldReturnEmptyCollectionWhenGivenResourceIsNotDirectory(): void
     {
         // Expect & Given
         $resource = sprintf('%s/tests/Variant/Action/SendContactMessageAction.php', ABSPATH);
@@ -50,7 +66,7 @@ class LoadTest extends TestCase
         $filename = sprintf('%s%s', $resource, $fileName);
         $this->expectException(\InvalidArgumentException::class);
         $this->expectExceptionMessage(sprintf('The file "%s" does not contain PHP code. Did you forgot to add the "<?php" start tag at the beginning of the file?', $filename));
-        unlink($filename);
+        file_exists($filename) ? unlink($filename) : null;
         copy(sprintf('%s/%s', TESTS_DATA_DIRECTORY, $fileName), $filename);
         $type = 'ifrost_api';
         $loader = new AnnotatedRouteActionLoader(
@@ -62,7 +78,7 @@ class LoadTest extends TestCase
             $loader->load($resource, $type);
         } finally {
             // Then
-            unlink($filename);
+            file_exists($filename) ? unlink($filename) : null;
         }
     }
 }

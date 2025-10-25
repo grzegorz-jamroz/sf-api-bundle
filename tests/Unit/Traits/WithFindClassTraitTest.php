@@ -14,7 +14,7 @@ class WithFindClassTraitTest extends TestCase
     {
         // Given
         $finder = new FindClassTraitUser();
-        $file = sprintf('%s/../../data/FileWithoutClass.php', __DIR__);
+        $file = sprintf('%s/FileWithoutClass.php', TESTS_DATA_DIRECTORY);
 
         // When & Then
         $this->assertFalse($finder->find($file));
@@ -24,7 +24,7 @@ class WithFindClassTraitTest extends TestCase
     {
         // Given
         $finder = new FindClassTraitUser();
-        $file = sprintf('%s/../../data/FileWithAnonymousClass.php', __DIR__);
+        $file = sprintf('%s/FileWithAnonymousClass.php', TESTS_DATA_DIRECTORY);
 
         // When & Then
         $this->assertFalse($finder->find($file));
@@ -34,7 +34,7 @@ class WithFindClassTraitTest extends TestCase
     {
         // Given
         $finder = new FindClassTraitUser();
-        $file = sprintf('%s/../../data/FileWithClassConstant.php', __DIR__);
+        $file = sprintf('%s/FileWithClassConstant.php', TESTS_DATA_DIRECTORY);
 
         // When & Then
         $this->assertFalse($finder->find($file));
@@ -48,6 +48,16 @@ class WithFindClassTraitTest extends TestCase
 
         // When & Then
         $this->assertEquals(ProductCreateAction::class, $finder->find($file));
+    }
+
+    public function testShouldReturnFalseForGivenFile()
+    {
+        // Given
+        $finder = new FindClassTraitUser();
+        $file = sprintf('%s/EmptyFileClass.php', TESTS_DATA_DIRECTORY);
+
+        // When & Then
+        $this->assertFalse($finder->find($file));
     }
 }
 
