@@ -1,4 +1,8 @@
 # Changelog
+## Unreleased
+### Delete
+- remove composer.lock
+
 ## [v7.0.1] - 2025.10.25
 ### Change
 - Return single type (`string`) for [WithFindClassTrait](src/Traits/WithFindClassTrait.php)
