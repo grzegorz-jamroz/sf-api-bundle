@@ -1,7 +1,7 @@
 {
   "name": "grzegorz-jamroz/sf-api-bundle",
   "description": "Bundle provides basic features for Symfony Api.",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "authors": [
     {
       "name": "Grzegorz Jamróz",
