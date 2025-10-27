@@ -10,12 +10,12 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 interface ApiRequestInterface
 {
     /**
-     * @return array<string|int, mixed>
+     * @return array<string, mixed>
      */
     public function getData(): array;
 
     /**
-     * @param array<string|int, mixed> $data
+     * @param array<string, mixed> $data
      */
     public function setData(array $data): void;
 

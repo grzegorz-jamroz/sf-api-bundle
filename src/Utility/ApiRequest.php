@@ -16,7 +16,7 @@ class ApiRequest implements ApiRequestInterface
     private Request $request;
 
     /**
-     * @var array<string|int, mixed>|null
+     * @var array<string, mixed>|null
      */
     private ?array $data = null;
 
@@ -25,6 +25,9 @@ class ApiRequest implements ApiRequestInterface
         $this->request = $requestStack->getCurrentRequest() ?? throw new RuntimeException('Unable to get Current Request');
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     public function getData(): array
     {
         if ($this->data !== null) {
@@ -32,15 +35,20 @@ class ApiRequest implements ApiRequestInterface
         }
 
         $body = json_decode(Transform::toString($this->request->getContent()), true);
-        $this->data = array_merge(
-            Transform::toArray($this->request->query->all()),
-            Transform::toArray($this->request->request->all()),
-            Transform::toArray($body),
-        );
+        /** @var array<string, mixed> $data */
+        $data = [
+            ...Transform::toArray($this->request->query->all()),
+            ...Transform::toArray($this->request->request->all()),
+            ...Transform::toArray($body),
+        ];
+        $this->data = $data;
 
         return $this->data;
     }
 
+    /**
+     * @param array<string, mixed> $data
+     */
     public function setData(array $data): void
     {
         $this->data = $data;
