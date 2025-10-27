@@ -1,4 +1,11 @@
 # Changelog
+## [v7.0.3] - 2025.10.27
+### Add
+- add coverage script and update README for coverage report instructions
+
+### Change
+- update ApiRequest data typing to use array<string, mixed>
+
 ## [v7.0.2] - 2025.10.26
 ### Delete
 - remove composer.lock
@@ -56,6 +63,7 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v7.0.3]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.3
 [v7.0.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.2
 [v7.0.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.1
 [v7.0.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.0
