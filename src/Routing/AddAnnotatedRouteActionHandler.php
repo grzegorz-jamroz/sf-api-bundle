@@ -8,7 +8,7 @@ use Exception;
 use ReflectionAttribute;
 use ReflectionClass;
 use Stringable;
-use Symfony\Component\Routing\Annotation\Route as RouteAttribute;
+use Symfony\Component\Routing\Attribute\Route as RouteAttribute;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 
