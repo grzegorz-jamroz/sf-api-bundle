@@ -3,6 +3,9 @@
 ### Change
 - [AddAnnotatedRouteActionHandler](src/Routing/AddAnnotatedRouteActionHandler.php)
   - update namespace for Route attribute to align with Symfony standards
+### Add
+- Symfony 8 support
+  - update attribute getters (required by new Property hooks in Symfony 8) in [AddAnnotatedRouteActionHandler](src/Routing/AddAnnotatedRouteActionHandler.php)
 
 ## [v7.0.3] - 2025.10.27
 ### Add

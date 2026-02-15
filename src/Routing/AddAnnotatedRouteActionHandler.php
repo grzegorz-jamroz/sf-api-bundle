@@ -34,30 +34,34 @@ class AddAnnotatedRouteActionHandler
         }
 
         if (
-            $attribute->getName() === null
-            || $attribute->getPath() === null
+            $attribute->name === null
+            || $attribute->path === null
         ) {
             return;
         }
 
         /** @var array<string|Stringable> $requirements */
-        $requirements = $attribute->getRequirements();
+        $requirements = $attribute->requirements;
         /** @var string[] $schemes */
-        $schemes = $attribute->getSchemes();
+        $schemes = $attribute->schemes;
         /** @var string[] $methods */
-        $methods = $attribute->getMethods();
+        $methods = $attribute->methods;
+
+        if (is_string($attribute->path) === false) {
+            return;
+        }
 
         $this->routes->add(
-            $attribute->getName(),
+            $attribute->name,
             new Route(
-                $attribute->getPath(),
+                $attribute->path,
                 ['_controller' => $this->className],
                 $requirements,
-                $attribute->getOptions(),
-                $attribute->getHost(),
+                $attribute->options,
+                $attribute->host,
                 $schemes,
                 $methods,
-                $attribute->getCondition()
+                $attribute->condition
             )
         );
     }
