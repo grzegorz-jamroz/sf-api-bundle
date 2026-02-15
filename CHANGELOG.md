@@ -1,5 +1,5 @@
 # Changelog
-### Unreleased
+## [v8.0.0] - 2026.02.15
 ### Change
 - [AddAnnotatedRouteActionHandler](src/Routing/AddAnnotatedRouteActionHandler.php)
   - update namespace for Route attribute to align with Symfony standards
