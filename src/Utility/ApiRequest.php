@@ -134,6 +134,11 @@ class ApiRequest implements ApiRequestInterface
         return $this->request->headers->get($key, $default);
     }
 
+    public function hasHeader(string $key): bool
+    {
+        return $this->request->headers->has($key);
+    }
+
     /**
      * @throws BadRequestException
      */
@@ -151,6 +156,11 @@ class ApiRequest implements ApiRequestInterface
     public function getCookie(string $key, bool|float|int|string|null $default = null): mixed
     {
         return $this->request->cookies->get($key, $default);
+    }
+
+    public function hasCookie(string $key): bool
+    {
+        return $this->request->cookies->has($key);
     }
 
     /**

@@ -56,12 +56,16 @@ interface ApiRequestInterface
 
     public function getHeader(string $key): mixed;
 
+    public function hasHeader(string $key): bool;
+
     /**
      * @throws BadRequestException
      */
     public function getRequiredHeader(string $key): mixed;
 
     public function getCookie(string $key): mixed;
+
+    public function hasCookie(string $key): bool;
 
     /**
      * @throws BadRequestException

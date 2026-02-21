@@ -1,4 +1,8 @@
 # Changelog
+## Unreleased
+### Add
+- add hasHeader and hasCookie methods to ApiRequest for improved header and cookie checks
+
 ## [v8.0.0] - 2026.02.15
 ### Change
 - [AddAnnotatedRouteActionHandler](src/Routing/AddAnnotatedRouteActionHandler.php)
