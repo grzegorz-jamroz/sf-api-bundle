@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## [v8.0.1] - 2026.02.21
 ### Add
 - add hasHeader and hasCookie methods to ApiRequest for improved header and cookie checks
 
@@ -75,6 +75,8 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v8.0.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v8.0.1
+[v8.0.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v8.0.0
 [v7.0.3]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.3
 [v7.0.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.2
 [v7.0.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.1
