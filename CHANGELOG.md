@@ -1,4 +1,8 @@
 # Changelog
+## Unreleased
+### Add
+- add AbstractApiRequest class to simplify extending and decorating ApiRequest functionality
+
 ## [v8.0.1] - 2026.02.21
 ### Add
 - add hasHeader and hasCookie methods to ApiRequest for improved header and cookie checks
