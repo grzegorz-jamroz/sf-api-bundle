@@ -1,5 +1,5 @@
 # Changelog
-## Unreleased
+## [v8.0.2] - 2026.06.05
 ### Add
 - add AbstractApiRequest class to simplify extending and decorating ApiRequest functionality
 
@@ -79,6 +79,7 @@
 - [ApiRequest](src/Utility/ApiRequest.php)
   - add method setData
 
+[v8.0.2]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v8.0.2
 [v8.0.1]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v8.0.1
 [v8.0.0]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v8.0.0
 [v7.0.3]: https://github.com/grzegorz-jamroz/sf-api-bundle/releases/tag/v7.0.3
